@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgresql-vms
+    environment:
+      POSTGRES_USER: vmsdbuser
+      POSTGRES_PASSWORD: vmsdbpassword
+      POSTGRES_DB: vmsdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - vmspgdata:/var/lib/postgresql/data
+    networks:
+      - vms-app-network  # Using the network name directly
+
+volumes:
+  vmspgdata:
+
+networks:
+  vms-app-network:
+    driver: bridge
