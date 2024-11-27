@@ -19,6 +19,11 @@ const client = new Client({
 
 client.connect();
 
+// Sanity Test
+app.get('/', async(c)=>{
+  return c.json("Server is working")
+})
+
 // CREATE Todo
 app.post('/todos', async (c) => {
     const { title } = await c.req.json()
@@ -51,10 +56,10 @@ app.post('/todos', async (c) => {
   })
 
 const port = 3000;
-console.log(`Server is running on port ${port}`);
+console.log(`Server is running on port ${process.env.PORT}`);
 
 // Start the server
 serve({
   fetch: app.fetch,
-  port,
+  port:process.env.PORT,
 });
