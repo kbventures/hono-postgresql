@@ -4,7 +4,6 @@ import { cors } from "hono/cors";
 import pkg from 'pg';
 const { Client } = pkg;
 import dotenv from 'dotenv';
-import cors from '@hono/cors';  // Import CORS
 
 
 dotenv.config()
