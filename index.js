@@ -1,12 +1,23 @@
 import { serve } from "@hono/node-server"
 import { Hono } from "hono";
+import { cors } from "hono/cors";
 import pkg from 'pg';
 const { Client } = pkg;
 import dotenv from 'dotenv';
+import cors from '@hono/cors';  // Import CORS
+
 
 dotenv.config()
 
 const app = new Hono();
+
+app.use(cors());
+
+// Specific origian and configurations
+// app.use(cors({
+//   origin: 'https://your-react-app.onrender.com',  // Allow only this origin
+// }));
+
 
 // Set up PostgreSQL client
 const client = new Client({
